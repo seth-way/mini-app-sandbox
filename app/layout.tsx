@@ -7,9 +7,9 @@ import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
 import Navbar from "@/components/layout/navbar";
 
 export const metadata = {
-  title: "Precedent - Building blocks for your Next.js project",
+  title: "Mini-App-SandBox",
   description:
-    "Precedent is the all-in-one solution for your Next.js project. It includes a design system, authentication, analytics, and more.",
+    "A mini-app sandbox built on NextJS with radixUI components and TailwindCSS.",
   metadataBase: new URL("https://precedent.dev"),
 };
 
@@ -21,7 +21,7 @@ export default async function RootLayout({
   return (
       <html lang="en">
         <body className={cx(sfPro.variable, inter.variable)}>
-          <div className="fixed h-screen w-full bg-gradient-to-br from-indigo-900 via-black to-cyan-900" />
+          <div className="fixed h-screen w-full bg-gradient-to-br from-indigo-900 via-black to-cyan-900 -z-10" />
           <Suspense fallback="...">
             <Navbar />
           </Suspense>
