@@ -9,7 +9,7 @@
      const publicPath = path.join(process.cwd(), "public/static");
      const fullPath = path.join(publicPath, filePath);
 
-     const fileContent = fs.readFileSync(fullPath, "utf-8");
+     const fileContent = fs.readFileSync('/static' + filePath, "utf-8");
      const records = parse(fileContent, { columns: true });
      return records;
    }
