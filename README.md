@@ -1,61 +1,34 @@
-<a href="https://precedent.dev">
-  <img alt="Precedent – Building blocks for your Next project" src="https://precedent.dev/opengraph-image" />
-  <h1 align="center">Precedent</h1>
-</a>
+<h1 align="center"><picture>
+  <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f4a1/512.webp" type="image/webp">
+  <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f4a1/512.gif" alt="💡" width="32" height="32">
+</picture><a href="https://mini-app-sandbox.vercel.app/" target="_blank">Mini-App Sandbox</a><picture>
+  <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f4a1/512.webp" type="image/webp">
+  <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f4a1/512.gif" alt="💡" width="32" height="32">
+</picture></h1>
 
-<p align="center">
-  Building blocks for your Next project
-</p>
+## Abstract:
+A NextJS / React sandbox for experimenting with new & interesting libraries.
 
-<p align="center">
-  <a href="https://twitter.com/steventey">
-    <img src="https://img.shields.io/twitter/follow/steventey?style=flat&label=steventey&logo=twitter&color=0bf&logoColor=fff" alt="Steven Tey Twitter follower count" />
-  </a>
-  <a href="https://github.com/steven-tey/precedent">
-    <img src="https://img.shields.io/github/stars/steven-tey/precedent?label=steven-tey%2Fprecedent" alt="Precedent repo star count" />
-  </a>
-</p>
+## Installation Instructions:
+[//]: <> (What steps does a person have to take to get your app cloned down and running?)
 
-<p align="center">
-  <a href="#introduction"><strong>Introduction</strong></a> ·
-  <a href="#one-click-deploy"><strong>One-click Deploy</strong></a> ·
-  <a href="#tech-stack--features"><strong>Tech Stack + Features</strong></a> ·
-  <a href="#author"><strong>Author</strong></a>
-</p>
-<br/>
+> [!WARNING]
+> **[Node.js](https://nodejs.org/en) & [npm](https://www.npmjs.com/) are required to run this app.**<br>
+> _Please ensure you have both installed on your machine before proceeding._
 
-## Introduction
-
-Precedent is an opinionated collection of components, hooks, and utilities for your Next.js project.
-
-## One-click Deploy
-
-You can deploy this template to Vercel with the button below:
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fsteven-tey%2Fprecedent&project-name=precedent&repository-name=precedent&demo-title=Precedent&demo-description=An%20opinionated%20collection%20of%20components%2C%20hooks%2C%20and%20utilities%20for%20your%20Next%20project.&demo-url=https%3A%2F%2Fprecedent.dev&demo-image=https%3A%2F%2Fprecedent.dev%2Fopengraph-image&env=NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,CLERK_SECRET_KEY&envDescription=Create%20a%20Clerk%20application%20to%20get%20these%20variables%3A&envLink=https%3A%2F%2Fdashboard.clerk.com%2Fapps%2Fnew)
-
-You can also clone & create this repo locally with the following command:
-
-```bash
-npx create-next-app precedent --example "https://github.com/steven-tey/precedent"
-```
-
-Then, install the dependencies with your package manager of choice:
-
-```bash
-npm i
-yarn
-pnpm i
-```
+- _(optional) *Fork this project to your own Github account._
+- Clone the repository to your local machine.
+- `cd` into the project folder.
+- Use the `npm install` command to install the project dependencies.
+- Use the `npm run dev` command to run a preview version of the app.
+- Check the console for the `PORT` & copy/paste `localhost:PORT` into your web browser.
+- If you would like to work with your own version of the API, fork [this repo](https://github.com/seth-way/degs-o-kev-bacon-api) & follow the instructions in the README.
 
 ## Tech Stack + Features
-
-https://github.com/user-attachments/assets/aef3c099-e371-43bf-b426-f5ba73185a7c
 
 ### Frameworks
 
 - [Next.js](https://nextjs.org/) – React framework for building performant apps with the best developer experience
-- [Clerk](https://go.clerk.com/precedent) - A comprehensive user management platform with beautifully designed, drop-in React components
 
 ### Platforms
 
@@ -86,10 +59,5 @@ https://github.com/user-attachments/assets/aef3c099-e371-43bf-b426-f5ba73185a7c
 - [Prettier](https://prettier.io/) – Opinionated code formatter for consistent code style
 - [ESLint](https://eslint.org/) – Pluggable linter for Next.js and TypeScript
 
-### Miscellaneous
-
-- [Vercel Analytics](https://vercel.com/analytics) – Track unique visitors, pageviews, and more in a privacy-friendly way
-
-## Author
-
-- Steven Tey ([@steventey](https://twitter.com/steventey))
+## Acknowledgement:
+This NextJS app was built on [Steven Tey's](https://twitter.com/steventey) [Precedent](https://github.com/steven-tey/precedent) boilerplate template.
