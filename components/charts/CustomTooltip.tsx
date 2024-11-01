@@ -2,12 +2,10 @@ import Image from "next/image";
 
 export default function CustomTooltip({
   active,
-  payload,
-  label,
+  payload
 }: {
-  active: boolean;
-  payload: any;
-  label: string;
+  active?: boolean;
+  payload?: any;
 }) {
   if (active && payload && payload.length) {
     const team = payload[0].payload;

@@ -22,7 +22,7 @@ export default function AppCard({
 
   return (
     <div
-      className="relative col-span-1 flex h-48 w-48 flex-col items-center justify-center overflow-hidden rounded-full border border-gray-200 bg-gray-950 shadow-md hover:cursor-pointer"
+      className="relative col-span-1 flex h-48 w-48 flex-col items-center justify-center overflow-hidden rounded-3xl border border-gray-200 bg-gray-950 shadow-md hover:cursor-pointer"
       onClick={handleClick}
     >
       <h2 className="bg-gradient-to-br from-white to-stone-500 bg-clip-text font-display text-lg font-bold text-transparent [text-wrap:balance] md:text-xl md:font-normal">
