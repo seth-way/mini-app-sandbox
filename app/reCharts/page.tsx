@@ -1,7 +1,11 @@
 "use client";
 import { useState, useEffect, useMemo } from "react";
-import { readCSV } from "../actions/read-cvs";
-import { normalizeTeamData, IData } from "./lib/utils";
+import {
+  normalizeTeamData,
+  normalizeDVOAData,
+  getPastWeeks,
+} from "./lib/utils";
+import { IDVOAInfo, ITeams } from "./lib/types";
 import {
   ScatterChart,
   Scatter,
@@ -17,17 +21,22 @@ import {
 import CustomTooltip from "@/components/charts/CustomTooltip";
 
 export default function ReCharts() {
-  const [data, setData] = useState<IData[]>([]);
+  const [teamData, setTeamData] = useState<ITeams | {}>({});
+  const [dvoaData, setDvoaData] = useState<IDVOAInfo[]>([]);
   useEffect(() => {
     const fetchTeamData = async () => {
       //const dvoaData = await readCSV("/reCharts/dvoa.csv");
       //const teamData = await readCSV("/reCharts/team-info.csv");
-      const dvoaData = await (await fetch("/api/data/reCharts/dvoa")).json();
-      const teamData = await (
-        await fetch("/api/data/reCharts/team-info")
-      ).json();
-      const normalizedData = normalizeTeamData(dvoaData.data, teamData.data);
-      setData(normalizedData);
+      const weeks = getPastWeeks();
+      const teamInfo = (
+        await (await fetch("/api/data/reCharts/team-info")).json()
+      ).data;
+      setTeamData(normalizeTeamData(teamInfo));
+      
+      // const dvoaInfo = await (await fetch("/api/data/reCharts/dvoa")).json();
+
+      // const normalizedData = normalizeTeamData(dvoaData.data, teamData.data);
+      // setData(normalizedData);
     };
     fetchTeamData();
   }, []);
@@ -91,7 +100,7 @@ export default function ReCharts() {
               strokeOpacity={0.9}
             />
             <Tooltip content={<CustomTooltip />} />
-            <Scatter name="dvoa" data={data} fill="#8884d8">
+            {/* <Scatter name="dvoa" data={data} fill="#8884d8">
               {data.map((team, idx) => (
                 <Cell
                   stroke={team.altColor}
@@ -100,7 +109,7 @@ export default function ReCharts() {
                   fill={team.color}
                 />
               ))}
-            </Scatter>
+            </Scatter> */}
           </ScatterChart>
         </ResponsiveContainer>
       </div>
