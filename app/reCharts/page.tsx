@@ -20,8 +20,8 @@ export default function ReCharts() {
   const [data, setData] = useState<IData[]>([]);
   useEffect(() => {
     const fetchTeamData = async () => {
-      const dvoaData = await readCSV("/data/ReactCharts/dvoa.csv");
-      const teamData = await readCSV("/data/ReactCharts/team-info.csv");
+      const dvoaData = await readCSV("/ReactCharts/dvoa.csv");
+      const teamData = await readCSV("/ReactCharts/team-info.csv");
       const normalizedData = normalizeTeamData(dvoaData, teamData);
       setData(normalizedData);
     };

@@ -6,7 +6,7 @@
    import { parse } from "csv-parse/sync"; // Or any suitable CSV parsing library
 
    export async function readCSV(filePath: string) {
-     const publicPath = path.join(process.cwd(), "public");
+     const publicPath = path.join(process.cwd(), "public/static");
      const fullPath = path.join(publicPath, filePath);
 
      const fileContent = fs.readFileSync(fullPath, "utf-8");

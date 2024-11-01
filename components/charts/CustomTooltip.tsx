@@ -13,7 +13,7 @@ export default function CustomTooltip({
       <div className="col-span-1 flex h-36 w-36 flex-col items-center justify-center overflow-hidden rounded-3xl border border-gray-200 bg-gray-950 shadow-md">
         <div className="flex h-1/2 w-full items-center justify-center gap-2">
           <Image
-            src={`/logos/${team.team}.png`}
+            src={`/static/images/logos/${team.team}.png`}
             alt={`${team.name} logo`}
             height={75}
             width={75}
