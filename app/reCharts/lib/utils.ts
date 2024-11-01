@@ -71,6 +71,6 @@ export function normalizeTeamData(
       wins: Number(dvoaBase["W-L"].split("-")[0]),
     } as IData;
   });
-  data.forEach((team) => console.log(team.wins));
+
   return data;
 }

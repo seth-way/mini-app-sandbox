@@ -20,9 +20,13 @@ export default function ReCharts() {
   const [data, setData] = useState<IData[]>([]);
   useEffect(() => {
     const fetchTeamData = async () => {
-      const dvoaData = await readCSV("/ReactCharts/dvoa.csv");
-      const teamData = await readCSV("/ReactCharts/team-info.csv");
-      const normalizedData = normalizeTeamData(dvoaData, teamData);
+      //const dvoaData = await readCSV("/reCharts/dvoa.csv");
+      //const teamData = await readCSV("/reCharts/team-info.csv");
+      const dvoaData = await (await fetch("/api/data/reCharts/dvoa")).json();
+      const teamData = await (
+        await fetch("/api/data/reCharts/team-info")
+      ).json();
+      const normalizedData = normalizeTeamData(dvoaData.data, teamData.data);
       setData(normalizedData);
     };
     fetchTeamData();
@@ -102,8 +106,7 @@ export default function ReCharts() {
       </div>
       <div className="mt-4 text-center [text-wrap:balance]">
         <p className="mt-2">
-          Dots represent DVOA through positioning & W/L via
-          size.
+          Dots represent DVOA through positioning & W/L via size.
         </p>
       </div>
     </div>

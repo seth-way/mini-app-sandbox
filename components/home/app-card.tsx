@@ -31,7 +31,7 @@ export default function AppCard({
       <div className="2-24 flex h-24 items-center justify-center">
         <Image
           alt={`mini-app tech logo: ${img}`}
-          src={`/${img}.svg`}
+          src={`/static/images/${img}.svg`}
           width={100}
           height={100}
         />
