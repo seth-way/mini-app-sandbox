@@ -31,6 +31,7 @@ export function normalizeDVOAData(dvoaData: IDVOAData[]): IDVOAInfo[] {
         defDVOA: Number(dvoaInfo["Def DVOA"]),
         record: dvoaInfo["W-L"],
         wins: Number(dvoaInfo["W-L"].split("-")[0]),
+        week: dvoaInfo.Week ? Number(dvoaInfo.Week) : 1
       } as IDVOAInfo),
   );
 }

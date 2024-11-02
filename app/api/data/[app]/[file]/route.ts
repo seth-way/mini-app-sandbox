@@ -19,6 +19,6 @@ export async function GET(
     return Response.json({ data });
   } catch (err) {
     console.error("failed to read file", file);
-    return Response.json({ data: {} });
+    return Response.json({ data: [] });
   }
 }

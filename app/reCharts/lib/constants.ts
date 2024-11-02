@@ -6,4 +6,4 @@ export const NFL_WEEKS = Array.from({ length: 18 }, (_, index) => {
     week: index + 1,
     date: startDate,
   };
-}).reverse();
+});

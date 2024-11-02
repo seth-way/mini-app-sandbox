@@ -55,7 +55,13 @@ export type IDVOAInfo = {
   defDVOA: number;
   record: string;
   wins: number;
+  week: number;
 };
+
+export type IWeeklyDVOA = {
+  week: number;
+  dvoas: IDVOAInfo[];
+}
 
 export type NFL_TEAM =
   | "ARI"
