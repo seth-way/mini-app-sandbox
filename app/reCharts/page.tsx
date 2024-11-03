@@ -10,13 +10,17 @@ import {
   CartesianGrid,
   Tooltip,
   Cell,
+  LabelList,
   ResponsiveContainer,
   ReferenceLine,
 } from "recharts";
+import { StyleSheetManager } from "styled-components";
+import isPropValid from "@emotion/is-prop-valid";
+import CustomDot from "@/components/charts/CustomDot";
 import CustomTooltip from "@/components/charts/CustomTooltip";
 import { getTeamData, getDVOAs } from "@/app/reCharts/lib/apiCalls";
 import { useDotResize } from "@/app/reCharts/lib/hooks";
-import { IWeeklyDVOA, ITeams, IDVOAInfo } from "./lib/types";
+import { IWeeklyDVOA, ITeams, IDVOAInfo } from "@/app/reCharts/lib/types";
 
 export default function ReCharts() {
   const ref = useRef(null);
@@ -33,7 +37,8 @@ export default function ReCharts() {
       setTeamData(teamInfo);
       const weeklyDVOA = await getDVOAs();
       setDvoaData(weeklyDVOA);
-      if (weeklyDVOA[0]) setDvoa(weeklyDVOA[0].dvoas);
+      if (weeklyDVOA[0])
+        setDvoa(weeklyDVOA[0].dvoas.sort((a, b) => a.wins - b.wins));
       setWeeks(
         weeklyDVOA.map((dvoa) => ({
           id: dvoa.week.toString(),
@@ -48,11 +53,11 @@ export default function ReCharts() {
     const week = Number(target.value);
     setWeek(week);
     const weekDvoa = dvoaData.find((datum) => datum.week === week);
-    if (weekDvoa) setDvoa(weekDvoa.dvoas);
+    if (weekDvoa) setDvoa(weekDvoa.dvoas.sort((a, b) => a.wins - b.wins));
   };
 
   return (
-    <div className="flex aspect-[2/3] w-11/12 max-w-3xl flex-col items-center gap-8  text-white">
+    <div className="flex w-11/12 max-w-3xl flex-col items-center gap-8  text-white">
       <h2 className="text-2xl font-bold">2024 NFL DVOA</h2>
       <div className="border-thin flex w-full flex-col items-center gap-2 md:flex-row">
         <div className="border-thin aspect-square w-full">
@@ -73,7 +78,7 @@ export default function ReCharts() {
                     dataKey="offDVOA"
                     name="Offensive DVOA"
                     interval={0}
-                    domain={[-60, 60]}
+                    domain={[-50, 50]}
                     label={{
                       key: "xAxisLabel",
                       value: "Offensive DVOA",
@@ -88,7 +93,7 @@ export default function ReCharts() {
                     dataKey="defDVOA"
                     name="Defensive DVOA"
                     interval={0}
-                    domain={[-60, 60]}
+                    domain={[-50, 50]}
                     label={{
                       value: "Defensive DVOA",
                       style: { textAnchor: "middle" },
@@ -119,44 +124,87 @@ export default function ReCharts() {
                     strokeOpacity={0.9}
                   />
                   <Tooltip content={<CustomTooltip />} />
-                  <Scatter name="dvoa" data={dvoa} fill="#8884d8">
-                    {teamData &&
-                      dvoa.map(({ team, week }) => (
-                        <Cell
-                          stroke={teamData[team].altColor}
-                          strokeWidth={1}
-                          key={`cell-${team}`}
-                          fill={teamData[team].color}
+                  <Scatter
+                    name="dvoa"
+                    data={dvoa}
+                    fill="#8884d8"
+                    shape={<CustomDot />}
+                  >
+                    {/* {teamData && (
+                      <>
+                        {dvoa.map(({ team, wins }) => (
+                          <Cell
+                            stroke={teamData[team].altColor}
+                            strokeWidth={1}
+                            key={`cell-${team}`}
+                            fill={teamData[team].color}
+                            className={`pointer-events-auto ${getZIndex(wins)}`}
+                          />
+                        ))}
+                        <LabelList
+                          dataKey="team"
+                          className="pointer-events-none"
                         />
-                      ))}
+                      </>
+                    )} */}
                   </Scatter>
                 </>
               )}
             </ScatterChart>
           </ResponsiveContainer>
         </div>
-        <div className="flex w-full items-center gap-4 text-center [text-wrap:balance] md:max-w-32 md:flex-col">
+        <div className="flex w-full items-center justify-center gap-4 text-center [text-wrap:balance] md:max-w-32 md:flex-col">
           <h3>Select Week</h3>
           <div className="border-thin rounded-md border border-gray-600">
-            <WheelPicker
-              data={weeks}
-              onChange={handleWeekChange}
-              height={90}
-              width={80}
-              titleText="Enter value same as aria-label"
-              itemHeight={30}
-              selectedID={weeks[0].id}
-              color="#333"
-              activeColor="#ccc"
-              backgroundColor="transparent"
-              shadowColor="transparent"
-            />
+            {weeks && (
+              <StyleSheetManager shouldForwardProp={isPropValid}>
+                <WheelPicker
+                  data={weeks}
+                  onChange={handleWeekChange}
+                  height={90}
+                  width={80}
+                  titleText="2024 NFL Week Picker"
+                  itemHeight={30}
+                  selectedID={weeks[0].id}
+                  color="#333"
+                  activeColor="#ccc"
+                  backgroundColor="transparent"
+                  shadowColor="transparent"
+                />
+              </StyleSheetManager>
+            )}
           </div>
-          <p className="text-gray-300">
-            Dots represent DVOA through positioning & W/L via size.
-          </p>
         </div>
       </div>
+      <p className="text-gray-300">
+        Logos represent DVOA through positioning & W/L via size.
+      </p>
     </div>
   );
+}
+
+function getZIndex(wins: number) {
+  const indices = [
+    "z-[20]",
+    "z-[19]",
+    "z-[18]",
+    "z-[17]",
+    "z-[16]",
+    "z-[15]",
+    "z-[14]",
+    "z-[13]",
+    "z-[12]",
+    "z-[11]",
+    "z-[10]",
+    "z-[9]",
+    "z-[8]",
+    "z-[7]",
+    "z-[6]",
+    "z-[5]",
+    "z-[4]",
+    "z-[3]",
+    "z-[2]",
+    "z-[1]",
+  ];
+  return indices[wins];
 }

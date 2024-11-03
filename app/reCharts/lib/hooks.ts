@@ -31,9 +31,9 @@ export const useDotResize = (
 };
 
 function calculateMinMax(width: number, week: number): number[] {
-  if (width < 325) return [0.3 * width, 0.5 * width];
+  if (width < 325) return [0.8 * width, width];
   const multiplier = week < 3 ? 1.2 : 2;
-  const max = width * multiplier + (week * width) / 36;
+  const max = width * multiplier + (week * width) / 18;
   const min = week < 3 ? 0.9 * max : width / 3.5;
   return [min, max];
 }
