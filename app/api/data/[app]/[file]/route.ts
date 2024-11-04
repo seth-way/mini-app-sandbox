@@ -13,9 +13,12 @@ export async function GET(
   const file = (await params).file;
   const publicPath = path.join(process.cwd(), "public/static");
   const fullPath = path.join(publicPath, app, `${file}.csv`);
-  console.log("FULL PATH", fullPath);
-  const fileContent = fs.readFileSync(fullPath, "utf-8");
-  const data = parse(fileContent, { columns: true });
-  return Response.json({ data });
-  console.log("app <>", app, "file <>", file);
+  try {
+    const fileContent = fs.readFileSync(fullPath, "utf-8");
+    const data = parse(fileContent, { columns: true });
+    return Response.json({ data });
+  } catch (err) {
+    console.error("failed to read file", file);
+    return Response.json({ data: [] });
+  }
 }
