@@ -27,9 +27,14 @@ export default function Home() {
             img="recharts"
             redirectPath="reCharts"
           />
+          <AppCard
+            title="Chess"
+            description="Chess.js & react-chessboard proof of concenpt for Frien-emies app."
+            img="chess"
+            redirectPath="chess"
+          />
         </div>
       </div>
-      <div className="my-10 grid w-full max-w-screen-xl animate-fade-up grid-cols-1 gap-5 px-5 md:grid-cols-3 xl:px-0"></div>
     </>
   );
 }
