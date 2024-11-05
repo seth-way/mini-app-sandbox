@@ -1,4 +1,5 @@
 import AppCard from "@/components/home/app-card";
+import { APPS } from "@/lib/constants";
 
 export default function Home() {
   return (
@@ -21,18 +22,15 @@ export default function Home() {
           className="mx-auto mt-6 flex animate-fade-up items-center justify-center space-x-5 opacity-0"
           style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
         >
-          <AppCard
-            title="ReCharts"
-            description="Data visualization with the re-charts library."
-            img="recharts"
-            redirectPath="reCharts"
-          />
-          <AppCard
-            title="Chess"
-            description="Chess.js & react-chessboard proof of concenpt for Frien-emies app."
-            img="chess"
-            redirectPath="chess"
-          />
+          {APPS.map(({ title, description, img, redirectPath }, idx) => (
+            <AppCard
+              title={title}
+              description={description}
+              img={img}
+              redirectPath={redirectPath}
+              key={`${title}_card_${idx}`}
+            />
+          ))}
         </div>
       </div>
     </>
