@@ -9,6 +9,12 @@
 ## Abstract:
 A NextJS / React sandbox for experimenting with new & interesting libraries.
 
+## Preview:
+[//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off.)
+<div align="center">
+  <img src="/lib/assets/images/site-nav.gif" alt="preview of app navigation" width="500px" height="auto">
+</div>
+
 ## Installation Instructions:
 [//]: <> (What steps does a person have to take to get your app cloned down and running?)
 
