@@ -10,7 +10,7 @@ export const APPS: IAppInfo[] = [
     title: "ReCharts",
     description: "Data visualization with the re-charts library.",
     img: "recharts",
-    redirectPath: "reCarts",
+    redirectPath: "reCharts",
   },
   {
     title: "Chess",
