@@ -5,6 +5,9 @@ import Footer from "@/components/layout/footer";
 import { Suspense } from "react";
 import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
 import Navbar from "@/components/layout/navbar";
+// troubleshooting scrapers.......
+import { fetchTop100s } from "@/lib/scripts/scrapers/lists";
+fetchTop100s();
 
 export const metadata = {
   title: "Mini-App-SandBox",
