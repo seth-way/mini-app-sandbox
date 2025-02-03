@@ -1,6 +1,7 @@
 import path from "path";
 import { promises as fs } from "fs";
 import { NextResponse } from "next/server";
+import { checkCacheDir } from "@/lib/scripts/scrapers/utils";
 
 const CACHE_PATH = path.join(process.cwd(), ".cache/lists");
 
@@ -8,6 +9,7 @@ export async function GET(
   req: Request,
   { params }: { params: { year: string } },
 ) {
+  checkCacheDir("lists");
   const { year } = params;
 
   try {
@@ -32,6 +34,7 @@ export async function POST(
   req: Request,
   { params }: { params: { year: string } },
 ) {
+  checkCacheDir("lists");
   const { year } = params;
 
   try {

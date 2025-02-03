@@ -1,3 +1,6 @@
+import fs from "fs";
+import path from "path";
+
 export function convertTeamToNFL(teamStr: string): NFL_TEAM {
   const teamMap: Record<string, NFL_TEAM> = {
     "Arizona Cardinals": "ARI",
@@ -70,4 +73,11 @@ export function extractPosition(positionStr: string): IPosition {
   }
 
   return mappedPosition;
+}
+
+export function checkCacheDir(dir: string) {
+  const cacheDir = path.join(process.cwd(), ".cache", dir);
+  if (!fs.existsSync(cacheDir)) {
+    fs.mkdirSync(cacheDir, { recursive: true });
+  }
 }
